@@ -31,7 +31,7 @@ This game presents a fresh puzzle every day, automatically refreshed for daily p
 First, clone the repository to your local machine:
 
 ```bash
-git clone https://github.com/VaagenIM/gaming-Kliiyu.git
+git clone https://github.com/VaagenIM/Namesoundaliker.git
 cd gaming-Kliiyu
 ```
 
