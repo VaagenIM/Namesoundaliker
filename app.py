@@ -3,7 +3,7 @@ import json
 
 app = Flask(__name__)
 
-current_day = 1
+current_day = 2
 max_guesses = 5  # Number of guesses allowed per day
 
 app.secret_key = 'your_secret_key'

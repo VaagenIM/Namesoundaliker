@@ -1,0 +1,12 @@
+{
+    "soundalike": "Wall termite",
+    "answers": ["walter white", "the guy from fortnite"],
+    "hint1": "TV show character", 
+    "hint2": "Known for his serious demeanor",
+    "hint3": "Iconic",
+    "hint4": "Breaking bad",
+    "hint5": "\"I am not in danger, Skyler. I am the danger.\"",
+    "img1": "./images/img1.jpg",
+    "img2": "./images/img2.jpg",
+    "img3": "./images/img3.jpg"
+}
