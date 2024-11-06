@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> 
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- JS -->
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+    
+    <title>Namesoundaliker</title>
+</head>
+<body>
+    
+    <nav>
+        <ul>
+            <li><a href="#"><i class="fas fa-cog"></i></a></li>
+            <li><a onclick="copyCurrentUrlToClipboard()"><i class="fas fa-share-alt"></i></a></li>
+            <li><span style="font-size: 20px;">Namesoundaliker #{{ day }}</span></li>
+            <li><a href="#"><i class="fas fa-chart-bar"></i></a></li>
+            <li><a href="#"><i class="fas fa-question-circle"></i></a></li>
+        </ul>
+    </nav>
+    <hr class="custom-hr">
+
+    <main>
+        <h3 class="text-2">Guess who this word sounds like</h3>
+        <h1 class="text-1">{{ soundalike }}</h1>
+
+        <div class="box-container">
+            {% for hint in hints %}
+                {% if loop.index0 >= guess %}
+                    {% if loop.index0 == guess and not correct %}
+                        <div class="box current">{{ hint[0] }}</div>
+                    {% else %}
+                        <div class="box">{{ hint[0] }}</div>
+                    {% endif %}
+                {% else %}
+                    {% if loop.index == guess and correct %}
+                        <div class="box correct">{{ hint[1] }}</div>
+                    {% else %}
+                        <div class="box wrong">{{ hint[1] }}</div>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        {% if not correct %}
+            <div class="input-container">
+                <form action="/{{ day }}/guess" method="post">
+                    <input type="text" id="guess-input" name="guess" placeholder="Enter your guess here">
+                    <button class="btn btn-green" type="submit">Guess</button>
+                </form>
+                <form action="/{{ day }}/skip" method="post">
+                    <button class="btn btn-skip" type="submit">Skip</button>
+                </form>
+            </div>
+        {% endif %}
+    </main>
+
+</body>
+</html>
