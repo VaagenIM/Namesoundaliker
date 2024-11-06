@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> 
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- JS -->
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+    
+    <title>Namesoundaliker</title>
+</head>
+<body>
+    
+    <nav>
+        <ul>
+            <li><a onclick="openModal('settings-modal')"><i class="fas fa-cog"></i></a></li>
+            <li><a onclick="copyCurrentUrlToClipboard()"><i class="fas fa-share-alt"></i></a></li>
+            <li><span style="font-size: 20px;">Namesoundaliker #{{ day }}</span></li>
+            <li><a onclick="openModal('stats-modal')"><i class="fas fa-chart-bar"></i></a></li>
+            <li><a onclick="openModal('howto-modal')"><i class="fas fa-question-circle"></i></a></li>
+        </ul>
+    </nav>
+    <hr class="custom-hr">
+
+    <main>
+        <h3 class="text-2">Guess who this word sounds like</h3>
+        <h1 class="text-1">{{ soundalike }}</h1>
+
+        <div class="box-container">
+            {% for hint in hints %}
+                {% if loop.index0 >= guess %}
+                    {% if loop.index0 == guess and not correct %}
+                        <div class="box current">{{ hint[0] }}</div>
+                    {% else %}
+                        <div class="box">{{ hint[0] }}</div>
+                    {% endif %}
+                {% else %}
+                    {% if loop.index == guess and correct %}
+                        <div class="box correct">{{ hint[1] }}</div>
+                    {% else %}
+                        <div class="box wrong">{{ hint[1] }}</div>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        {% if guess <= max_guesses - 1 %}
+            {% if not correct %}
+                <div class="input-container">
+                    <form action="/{{ day }}/guess" method="post">
+                        <input type="text" id="guess-input" name="guess" placeholder="Enter your guess here">
+                        <button class="btn btn-green" type="submit">Guess</button>
+                    </form>
+                    <form action="/{{ day }}/skip" method="post">
+                        <button class="btn btn-skip" type="submit">Skip</button>
+                    </form>
+                </div>
+            {% endif %}
+        {% endif %}
+        <div class="input-container">
+            {% if day != 1 %}
+                <form action="/{{ day }}/prev" method="post">
+                    <button class="btn btn-prev" type="submit">Previous day</button>
+                </form>
+            {% endif %}
+            {% if day != current_day %}
+                <form action="/{{ day }}/next" method="post">
+                    <button class="btn btn-next" type="submit">Next day</button>
+                </form>
+            {% endif %}
+        </div>
+    </main>
+        
+    <dialog id="howto-modal" class="modal">
+        <h2>How to play</h2>
+        <p>Guess who the word sounds like by typing in the name of the person you think it sounds like.</p>
+        <p>Click the "Guess" button to submit your guess.</p>
+        <p>If you're not sure, you can skip to the next word by clicking the "Skip" button.</p>
+        <button class="btn btn-green" onclick="closeModal('howto-modal')">Got it!</button>
+    </dialog>
+    
+    <dialog id="settings-modal" class="modal">
+        <h2>Settings</h2>
+        <p>Haha no settings, not even dark mode</p>
+        <p>Made with ❤️ by Kliiyu and PrettyEpicCat</p>
+        <br>
+        <button class="btn btn-red" onclick="closeModal('settings-modal')">Close</button>
+    </dialog>
+    
+    <dialog id="stats-modal" class="modal">
+        <h2>Stats</h2>
+        <p>stats go here but im lazy</p>
+        <br>
+        <button class="btn btn-red" onclick="closeModal('stats-modal')">Close</button>
+    </dialog>
+    
+    {% if correct %}
+        <dialog id="end-modal" class="modal">
+            <h2>You did it!</h2>
+            <p>You got it {{ guess }} guesses. You can play more in</p>
+            <div id="countdown-timer"></div>
+            <br>
+            <button class="btn btn-green" onclick="closeModal('end-modal')">Close</button>
+        </dialog>
+    {% endif %}
+    {% if guess >= max_guesses %}
+        <dialog id="end-modal" class="modal">
+            <h2>Game over!</h2>
+            <p>You didn't get it in time. You can play more in</p>
+            <div id="countdown-timer"></div>
+            <br>
+            <button class="btn btn-red" onclick="closeModal('end-modal')">Close</button>
+        </dialog>
+    {% endif %}
+    </body>
+</html>

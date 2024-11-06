@@ -1,0 +1,12 @@
+{
+    "soundalike": "Autism Crime",
+    "answers": ["optimus prime", "the guy from fortnite"],
+    "hint1": "Movie character", 
+    "hint2": "Known for his voice",
+    "hint3": "Iconic",
+    "hint4": "Transformers",
+    "hint5": "\"Autobots roll out\"",
+    "img1": "./images/img1.jpg",
+    "img2": "./images/img2.jpg",
+    "img3": "./images/img3.jpg"
+}

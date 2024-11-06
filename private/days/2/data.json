@@ -1,0 +1,12 @@
+{
+    "soundalike": "Market fire",
+    "answers": ["markiplier", "the guy from fortnite"],
+    "hint1": "Internet celebrity", 
+    "hint2": "Known for horror game Let's plays",
+    "hint3": "37 Million subscribers",
+    "hint4": "Youtuber",
+    "hint5": "\"Was that the bite of '87\"",
+    "img1": "./images/img1.jpg",
+    "img2": "./images/img2.jpg",
+    "img3": "./images/img3.jpg"
+}
