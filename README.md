@@ -51,7 +51,7 @@ http://localhost:1738
 
 ### Usage
 Once the application is running, open your browser and navigate to http://localhost:1738. You’ll be greeted with the day’s puzzle, ready to play.
-Each day brings a new challenge, but you can also add additional puzzles (see Adding More Days).
+Each day brings a new challenge, but you can also add additional puzzles (see [Adding More Days](#adding-more-days)).
 
 ### Adding More Days
 To add more daily challenges, follow these steps:
@@ -78,6 +78,6 @@ docker compose up -d --build
 If you’d like to contribute to the project by adding features, improving documentation, or submitting bug fixes, please fork the repository and open a pull request.
 
 ### License
-This project is licensed under the MIT License.
+This project is licensed under the [MIT License](LICENCE).
 
 Made with ❤️ by Kliiyu and PrettyEpicCat
