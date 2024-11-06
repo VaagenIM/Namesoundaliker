@@ -1,0 +1,12 @@
+{
+    "soundalike": "Blackjack",
+    "answers": ["james bond", "007", "the guy from fortnite"],
+    "hint1": "Movie character", 
+    "hint2": "Know for being a part of the British Secret Service",
+    "hint3": "Several installments in the franchise, with multiple actors playing the role",
+    "hint4": "007",
+    "hint5": "\"The name's Bond, _____ Bond\"",
+    "img1": "./images/img1.jpg",
+    "img2": "./images/img2.jpg",
+    "img3": "./images/img3.jpg"
+}

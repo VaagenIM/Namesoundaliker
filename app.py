@@ -1,12 +1,15 @@
 from flask import Flask, render_template, redirect, request, session
 import json
+from datetime import datetime
 
 app = Flask(__name__)
 
-current_day = 2
+start_date = datetime(2024, 11, 5)
+current_day = (datetime.now() - start_date).days + 1
+
 max_guesses = 5  # Number of guesses allowed per day
 
-app.secret_key = 'your_secret_key'
+app.secret_key = 'super secret key that no one will ever guess haha'
 
 def get_day_data(day):
     try:
@@ -40,7 +43,6 @@ def day(day):
 
     attempts = session['attempts'][str(day)][0]
     correct = session['attempts'][str(day)][1]
-    #session['attempts'][str(day)] = [0, False] # testing
     session.modified = True
 
     hints = [
@@ -57,7 +59,9 @@ def day(day):
         soundalike=day_data['soundalike'],
         hints=hints,
         guess=attempts,
-        correct=correct
+        correct=correct,
+        max_guesses=max_guesses,
+        current_day=current_day
     )
 
 @app.route('/<int:day>/guess', methods=['POST'])
@@ -82,7 +86,6 @@ def guess(day):
     session.modified = True
 
     if user_guess in correct_answers:
-        print(f'Correct! {user_guess} is the answer for day {day}')
         session['attempts'][str(day)] = [session['attempts'][str(day)][0], True]
         session.modified = True
         return redirect(f'/{day}')
@@ -102,5 +105,13 @@ def skip(day):
 
     return redirect(f'/{day}')
 
+@app.route('/<int:day>/next', methods=['POST'])
+def next_day(day):
+    return redirect(f'/{day + 1}')
+
+@app.route('/<int:day>/prev', methods=['POST'])
+def prev_day(day):
+    return redirect(f'/{day - 1}')
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()

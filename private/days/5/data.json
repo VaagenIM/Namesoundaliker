@@ -1,0 +1,12 @@
+{
+    "soundalike": "Blackjack",
+    "answers": ["jack black", "the guy from fortnite"],
+    "hint1": "Actor", 
+    "hint2": "Know for comedy in movies",
+    "hint3": "You'll find him basically everywhere",
+    "hint4": "Kung Fu Panda, School of Rock, Jumanji",
+    "hint5": "\"I... am Steve\"",
+    "img1": "./images/img1.jpg",
+    "img2": "./images/img2.jpg",
+    "img3": "./images/img3.jpg"
+}

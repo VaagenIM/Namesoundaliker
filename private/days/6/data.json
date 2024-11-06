@@ -1,0 +1,12 @@
+{
+    "soundalike": "Bitter coleslaw",
+    "answers": ["better call saul", "saul goodman", "goodman", "the guy from fortnite", "that one lawyer"],
+    "hint1": "TV show/character", 
+    "hint2": "Know for being a criminal defense lawyer",
+    "hint3": "As well known as Walter White",
+    "hint4": "A part of the Breaking Bad universe",
+    "hint5": "\"S'all Good, Man.\"",
+    "img1": "./images/img1.jpg",
+    "img2": "./images/img2.jpg",
+    "img3": "./images/img3.jpg"
+}
