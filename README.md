@@ -78,6 +78,6 @@ docker compose up -d --build
 If you’d like to contribute to the project by adding features, improving documentation, or submitting bug fixes, please fork the repository and open a pull request.
 
 ### License
-This project is licensed under the [MIT License](LICENCE).
+This project is licensed under the [MIT License](LICENSE).
 
 Made with ❤️ by Kliiyu and PrettyEpicCat
