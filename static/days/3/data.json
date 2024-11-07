@@ -6,7 +6,7 @@
     "hint3": "Iconic",
     "hint4": "Breaking bad",
     "hint5": "\"I am not in danger, Skyler. I am the danger.\"",
-    "img1": "./images/img1.jpg",
-    "img2": "./images/img2.jpg",
-    "img3": "./images/img3.jpg"
+    "img1": "img1.jpg",
+    "img2": "img2.jpg",
+    "img3": "img3.jpg"
 }

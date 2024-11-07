@@ -170,3 +170,10 @@ nav ul li span {
     background-color: rgb(255, 244, 244);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
+.helper-img {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    margin: 20px 0;
+}
