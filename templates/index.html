@@ -30,7 +30,15 @@
         <h3 class="text-2">Guess who this word sounds like</h3>
         <h1 class="text-1">{{ soundalike }}</h1>
 
+        
         <div class="box-container">
+            {% if guess >= 3 and guess < 5 %}
+                <img class="helper-img" src="{{ url_for('static', filename=images[1]) }}" alt="{{ soundalike }}">
+            {% elif guess == 5 %}
+                <img class="helper-img" src="{{ url_for('static', filename=images[2]) }}" alt="{{ soundalike }}">
+            {% else %}
+                <img class="helper-img" src="{{ url_for('static', filename=images[0]) }}" alt="{{ soundalike }}">
+            {% endif %}
             {% for hint in hints %}
                 {% if loop.index0 >= guess %}
                     {% if loop.index0 == guess and not correct %}
@@ -101,7 +109,7 @@
     {% if correct %}
         <dialog id="end-modal" class="modal">
             <h2>You did it!</h2>
-            <p>You got it {{ guess }} guesses. You can play more in</p>
+            <p>You got it {{ guess + 1 }} guesses. You can play more in</p>
             <div id="countdown-timer"></div>
             <br>
             <button class="btn btn-green" onclick="closeModal('end-modal')">Close</button>

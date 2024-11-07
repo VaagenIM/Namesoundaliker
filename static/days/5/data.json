@@ -6,7 +6,7 @@
     "hint3": "You'll find him basically everywhere",
     "hint4": "Kung Fu Panda, School of Rock, Jumanji",
     "hint5": "\"I... am Steve\"",
-    "img1": "./images/img1.jpg",
-    "img2": "./images/img2.jpg",
-    "img3": "./images/img3.jpg"
+    "img1": "img1.jpg",
+    "img2": "img2.jpg",
+    "img3": "img3.jpg"
 }
