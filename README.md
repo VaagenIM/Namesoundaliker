@@ -58,13 +58,13 @@ To add more daily challenges, follow these steps:
 
 Navigate to the private/days directory: Each puzzle day is stored as a separate folder in this directory.
 ```arduino
-private/
+static/
 └── days/
     ├── 1/
     ├── 2/
     └── 3/
 ```
-Create a new folder: Add a new folder inside private/days/. Name the folder according to the day number (e.g., 4).
+Create a new folder: Add a new folder inside static/days/. Name the folder according to the day number (e.g., 4).
 
 Follow the file structure: Ensure the new folder follows the same file structure as previous days. Copy the template from another day folder if necessary.
 
