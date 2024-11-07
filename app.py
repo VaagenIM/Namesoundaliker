@@ -9,8 +9,8 @@ current_day = (datetime.now() - start_date).days + 1
 
 max_guesses = 6  # Number of guesses allowed per day
 
-#base_url = 'http://namesoundaliker.it3.iktim.no'
-base_url = 'http://localhost:5000'
+base_url = 'http://namesoundaliker.it3.iktim.no'
+#base_url = 'http://localhost:5000'
 app.secret_key = 'super secret key that no one will ever guess haha'
 
 import os
