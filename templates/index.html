@@ -4,13 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Styles -->
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> 
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- JS -->
     <script src="{{ url_for('static', filename='scripts.js') }}"></script>
-    
+    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+    <script>
+        if ('serviceWorker' in navigator) {
+          window.addEventListener('load', function () {
+            navigator.serviceWorker.register("{{ url_for('static', filename='service-worker.js') }}");
+          });
+        }
+    </script>
+
+    <meta name="description" content="Namesoundaliker - Guess who this word sounds like. A fun and challenging game to test your auditory skills.">
+    <meta name="keywords" content="Namesoundaliker, word game, puzzle game, guessing game, fun game, challenging game, daily game, wordle, bandle, funny">
+    <meta name="author" content="Kliiyu and PrettyEpicCat">
+    <meta property="og:title" content="Namesoundaliker - Guess who or what today's word sounds like">
+    <meta property="og:description" content="A fun and challenging puzzle game to test skills every day.">
+    <meta property="og:image" content="{{ url_for('static', filename='icons/banner-image.png') }}">
+    <meta property="og:url" content="{{ request.url }}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Namesoundaliker - Guess who or what today's word sounds like">
+    <meta name="twitter:description" content="A fun and challenging puzzle game to test skills every day.">
+    <meta name="twitter:image" content="{{ url_for('static', filename='icons/banner-image.png') }}">
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="{{ url_for('static', filename='icons/favicon.ico') }}" type="image/x-icon">
     <title>Namesoundaliker</title>
 </head>
 <body>
@@ -32,12 +51,16 @@
 
         
         <div class="box-container">
-            {% if guess >= 3 and guess < 5 %}
-                <img class="helper-img" src="{{ url_for('static', filename=images[1]) }}" alt="{{ soundalike }}">
-            {% elif guess == 5 %}
-                <img class="helper-img" src="{{ url_for('static', filename=images[2]) }}" alt="{{ soundalike }}">
+            {% if not correct %}
+                {% if guess >= 3 and guess < 5 %}
+                    <img class="helper-img" src="{{ url_for('static', filename=images[1]) }}" alt="{{ soundalike }}">
+                {% elif guess == 5 %}
+                    <img class="helper-img" src="{{ url_for('static', filename=images[2]) }}" alt="{{ soundalike }}">
+                {% else %}
+                    <img class="helper-img" src="{{ url_for('static', filename=images[0]) }}" alt="{{ soundalike }}">
+                {% endif %}
             {% else %}
-                <img class="helper-img" src="{{ url_for('static', filename=images[0]) }}" alt="{{ soundalike }}">
+                <img class="helper-img" src="{{ url_for('static', filename=images[2]) }}" alt="{{ soundalike }}">
             {% endif %}
             {% for hint in hints %}
                 {% if loop.index0 >= guess %}
